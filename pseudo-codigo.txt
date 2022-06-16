@@ -1,0 +1,5 @@
+1. Ler arquivo txt e extrair 3 colunas por sendo elas "Palavra minerada","Frase","Tradução da Palavra",sendo o delimitador um "."
+
+2. A estrutura do arquivo txt deve segui a regra acima, não podendo haver "." com menos ou mais de 3 colunas anteriores a ele
+
+3. A cada 3 colunas lidas, deverão ser processadas e enviadas para o anki
