@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class Queue{
+export class Queue{
     constructor()
     {
         this.first = null
@@ -48,5 +48,3 @@ class Queue{
 
     }
 }
-
-module.exports = Queue
