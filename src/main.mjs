@@ -1,6 +1,8 @@
 import { argv } from 'node:process'
 import { Invoker } from './commands/Invoker.mjs'
 import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.mjs'
+import { ProccessFile } from './services/ProccessFile.mjs'
+import { File as FileHelper } from './helpers/File.mjs'
 // ^M\s[\s\S]{1,}
 function main()
 {
@@ -9,11 +11,11 @@ function main()
     invoker.setCommand(
         '-f',
         new ProccessFileSaveAnki(
-            {
-                _invoke() {console.log('Deu certo')}
-            }
+            new ProccessFile(
+                new FileHelper()
+            ),
+            argv[3]
         ),
-        argv[3]
     )
 
     invoker.handle(argv[2])
