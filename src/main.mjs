@@ -3,6 +3,7 @@ import { Invoker } from './commands/Invoker.mjs'
 import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.mjs'
 import { ProccessFile } from './services/ProccessFile.mjs'
 import { File as FileHelper } from './helpers/File.mjs'
+import { File as FileModel } from './models/File.mjs'
 // ^M\s[\s\S]{1,}
 function main()
 {
@@ -12,7 +13,8 @@ function main()
         '-f',
         new ProccessFileSaveAnki(
             new ProccessFile(
-                new FileHelper()
+                new FileHelper(),
+                new FileModel()
             ),
             argv[3]
         ),
@@ -22,32 +24,3 @@ function main()
 }
 
 main()
-
-// const path = join(__dirname,'..','teste.txt')
-    // let file = readline.createInterface({
-    //     input: createReadStream(path),
-    //     output: process.stdout,
-    //     terminal: false
-    // })
-
-    // let c = 0
-    // let limit = 3
-    // let data = ''
-    // let queue = new Queue()
-
-    // file.on('line', line => {
-    //     if (line === '.' && c !== limit) throw new Error('O Ponto está no lugar errado')
-
-    //     if (line === '.' && c === limit) {
-    //         queue.enqueue(data)
-    //         c = 0
-    //         data = ''
-    //     } else {
-    //         data+=line+'&'
-    //         c++
-    //     }
-    // })
-
-    // file.on('close',()=>{
-    //     console.log(queue)
-    // })
