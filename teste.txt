@@ -1,12 +1,12 @@
-fine
-I am fine
-(bem)
+M fine
+F I am fine
+T (bem)
 .
-was
-I was follishe
-(fui,estava)
+M was
+F I was follishe
+T (fui,estava)
 .
-but
-but you
-(mas,porem,no entanto)
+M but
+F but you
+T (mas,porem,no entanto)
 .

@@ -18,6 +18,6 @@ export class ProccessFile
 
         const result = this.fileModel.extractStructureFromLines(file)
 
-        result.on('data',data => {console.log(data.toString('utf8'))})
+        result.on('data',data => {console.log(JSON.parse(data))})
     }
 }

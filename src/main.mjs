@@ -4,6 +4,7 @@ import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.mjs'
 import { ProccessFile } from './services/ProccessFile.mjs'
 import { File as FileHelper } from './helpers/File.mjs'
 import { File as FileModel } from './models/File.mjs'
+import { TagPattern } from './models/TagPattern.js'
 // ^M\s[\s\S]{1,}
 function main()
 {
@@ -14,7 +15,7 @@ function main()
         new ProccessFileSaveAnki(
             new ProccessFile(
                 new FileHelper(),
-                new FileModel()
+                new FileModel(new TagPattern())
             ),
             argv[3]
         ),
