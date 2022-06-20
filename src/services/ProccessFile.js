@@ -1,5 +1,5 @@
 import { createReadStream } from 'fs'
-import { FileTxt } from '../collections/FileTxt.mjs'
+import { FileTxt } from '../collections/FileTxt.js'
 
 export class ProccessFile
 {
@@ -8,7 +8,7 @@ export class ProccessFile
         this.fileModel = fileModel
     }
 
-    _invoke(path)
+    async _invoke(path)
     {
         if (!path) throw new Error('Caminho não informado')
         if (!this.fileHelper.fileExists(path)) throw new Error('O arquivo não existe')
@@ -18,6 +18,8 @@ export class ProccessFile
 
         const result = this.fileModel.extractStructureFromLines(file)
 
-        result.on('data',data => {console.log(JSON.parse(data))})
+        for await (let data of result) {
+            console.log(data)
+        }
     }
 }

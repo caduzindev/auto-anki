@@ -1,9 +1,9 @@
 import { argv } from 'node:process'
-import { Invoker } from './commands/Invoker.mjs'
-import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.mjs'
-import { ProccessFile } from './services/ProccessFile.mjs'
-import { File as FileHelper } from './helpers/File.mjs'
-import { File as FileModel } from './models/File.mjs'
+import { Invoker } from './commands/Invoker.js'
+import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.js'
+import { ProccessFile } from './services/ProccessFile.js'
+import { File as FileHelper } from './helpers/File.js'
+import { File as FileModel } from './models/File.js'
 import { TagPattern } from './models/TagPattern.js'
 // ^M\s[\s\S]{1,}
 function main()
