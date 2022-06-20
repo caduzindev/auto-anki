@@ -62,4 +62,42 @@ describe('Test model File', () => {
             expect(obj).toEqual(returnExpected)
         }
     })
+
+    test('Test fail with structure incorrect', async ()=>{
+        const fakeFile = {
+            getData: () => {
+                return createInterface({
+                    input: new Readable({
+                        read(){
+                            this.push('M fine\n')
+                            this.push('F I am fine\n')
+                            this.push('.\n')
+                            this.push('T (bem)')
+                            this.push(null)
+                        }
+                    }),
+                    output: process.stdout,
+                    terminal: false,
+                })
+            }
+        }
+
+        const { sut, mockTagPattern } = Sut()
+
+        mockTagPattern
+            .inTagPattern
+            .mockReturnValueOnce('M')
+            .mockReturnValueOnce('F')
+
+        mockTagPattern
+            .replaceTagPattern
+            .mockReturnValueOnce('fine')
+            .mockReturnValueOnce('I am fine')
+
+        let result = sut.extractStructureFromLines(fakeFile)
+
+        const resultGenerator = async () => {for await (const obj of result) {}}
+
+        await expect(resultGenerator).rejects.toThrowError(new Error('O Ponto está no lugar errado'))
+    })
 })
