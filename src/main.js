@@ -1,27 +1,21 @@
-import { argv } from 'node:process'
-import { Invoker } from './commands/Invoker.js'
-import { ProccessFileSaveAnki } from './commands/ProccessFileSaveAnki.js'
-import { ProccessFile } from './services/ProccessFile.js'
-import { File as FileHelper } from './helpers/File.js'
-import { File as FileModel } from './models/File.js'
-import { TagPattern } from './models/TagPattern.js'
-// ^M\s[\s\S]{1,}
+import { Command } from 'commander'
+import ProccessFileSaveAnkiFactory from './factories/ProccessFileSaveAnkiFactory.js'
+
 function main()
 {
-    let invoker = new Invoker()
+    const program = new Command()
 
-    invoker.setCommand(
-        '-f',
-        new ProccessFileSaveAnki(
-            new ProccessFile(
-                new FileHelper(),
-                new FileModel(new TagPattern())
-            ),
-            argv[3]
-        ),
-    )
+    program
+        .name('auto-anki')
+        .description('CLI para automações do anki')
+        .version('0.0.1')
 
-    invoker.handle(argv[2])
+    program.command('send-file')
+        .description('send-file processa arquivos com frases para serem salvos no anki')
+        .argument('<path>','arquivo a ser procesado')
+        .action(path=>ProccessFileSaveAnkiFactory(path).execute())
+
+    program.parse()
 }
 
 main()
