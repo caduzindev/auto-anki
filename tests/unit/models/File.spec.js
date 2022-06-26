@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { File } from "../../../src/models/File"
+import { File } from "../../../src/models/file/File.js"
 import { createInterface } from 'readline'
 import { Readable } from 'stream'
 
