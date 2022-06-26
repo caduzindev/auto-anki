@@ -19,7 +19,7 @@ export class ProccessFile
         const result = this.fileModel.extractStructureFromLines(file)
 
         for await (let data of result) {
-            this.ankiManagerNote.addNote({
+            await this.ankiManagerNote.addNote({
                 deckName: 'cobaia',
                 front: data.F,
                 back: `${data.M} ${data.T}`,

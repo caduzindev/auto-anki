@@ -18,7 +18,7 @@ const Sut = ()=>{
 }
 
 describe('AnkiManagerNote', () => {
-    test('should throw error if missing deckName',()=>{
+    test('should throw error if missing deckName',async ()=>{
        const data = {
         front: 'front',
         back: 'back',
@@ -27,9 +27,9 @@ describe('AnkiManagerNote', () => {
 
        const { sut } = Sut()
 
-       expect(()=>sut.addNote(data)).toThrowError(new Error('Campo deckName não informado'))
+       expect(()=>sut.addNote(data)).rejects.toThrowError(new Error('Campo deckName não informado'))
     })
-    test('should throw error if missing front',()=>{
+    test('should throw error if missing front',async ()=>{
        const data = {
         deckName: 'cobaia',
         back: 'back',
@@ -38,9 +38,9 @@ describe('AnkiManagerNote', () => {
 
        const { sut } = Sut()
 
-       expect(()=>sut.addNote(data)).toThrowError(new Error('Campo front não informado'))
+       expect(()=>sut.addNote(data)).rejects.toThrowError(new Error('Campo front não informado'))
     })
-    test('should throw error if missing back',()=>{
+    test('should throw error if missing back',async ()=>{
        const data = {
         deckName: 'cobaia',
         front: 'front',
@@ -49,7 +49,7 @@ describe('AnkiManagerNote', () => {
 
        const { sut } = Sut()
 
-       expect(()=>sut.addNote(data)).toThrowError(new Error('Campo back não informado'))
+       expect(()=>sut.addNote(data)).rejects.toThrowError(new Error('Campo back não informado'))
     })
     test('call success without audio',()=>{
        const data = {
