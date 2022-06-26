@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { Readable } from 'stream'
-import { ProccessFile } from "../../../src/services/ProccessFile.js"
+import { ProccessFile } from "../../../src/services/file/ProccessFile.js"
 
 const Sut = () => {
     const mockFileHelper = {
@@ -11,17 +11,17 @@ const Sut = () => {
     const mockFileModel = {
         extractStructureFromLines: jest.fn(),
     }
-    const mockAnkiManager = {
+    const mockAnkiManagerNote = {
         addNote: jest.fn()
     }
 
-    const sut = new ProccessFile(mockFileHelper,mockFileModel,mockAnkiManager)
+    const sut = new ProccessFile(mockFileHelper,mockFileModel,mockAnkiManagerNote)
 
     return {
         sut,
         mockFileHelper,
         mockFileModel,
-        mockAnkiManager
+        mockAnkiManagerNote
     }
 }
 
@@ -43,7 +43,7 @@ describe('Test ProcessFile service',()=>{
             yield data
         }
 
-        const { sut, mockFileHelper, mockFileModel, mockAnkiManager} = Sut()
+        const { sut, mockFileHelper, mockFileModel, mockAnkiManagerNote} = Sut()
 
         mockFileHelper
             .fileExists
@@ -67,7 +67,7 @@ describe('Test ProcessFile service',()=>{
         expect(mockFileHelper.fileExtension).toHaveBeenCalledWith(path)
         expect(mockFileHelper.streamOfFile).toHaveBeenCalledWith(path)
 
-        expect(mockAnkiManager.addNote).toHaveBeenCalledWith({
+        expect(mockAnkiManagerNote.addNote).toHaveBeenCalledWith({
             deckName:'cobaia',
             front: data.F,
             back: `${data.M} ${data.T}`,

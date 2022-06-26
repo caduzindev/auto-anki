@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs'
+import { createReadStream, existsSync } from 'node:fs'
 import { extname } from 'node:path'
 
 export class File
@@ -11,5 +11,10 @@ export class File
     fileExtension(path)
     {
         return extname(path)
+    }
+
+    streamOfFile(path)
+    {
+        return createReadStream(path)
     }
 }

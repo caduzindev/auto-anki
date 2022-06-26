@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import ProccessFileSaveAnkiFactory from './factories/ProccessFileSaveAnkiFactory.js'
+import ProccessFileSaveAnkiFactory from './factories/ProccessFileSaveAnki.js'
 
 function main()
 {

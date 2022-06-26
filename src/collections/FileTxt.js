@@ -1,10 +1,10 @@
 import { createInterface } from 'readline'
 
-export class FileTxt
+class FileTxt
 {
-    constructor (file) {
+    constructor (stream) {
         this.fileReader = createInterface({
-            input: file,
+            input: stream,
             output: process.stdout,
             terminal: false
         })
@@ -15,3 +15,5 @@ export class FileTxt
         return this.fileReader
     }
 }
+
+export default FileTxt
