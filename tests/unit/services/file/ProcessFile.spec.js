@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { Readable } from 'stream'
-import { ProccessFile } from "../../../src/services/file/ProccessFile.js"
+import { ProccessFile } from "../../../../src/services/file/ProccessFile.js"
 
 const Sut = () => {
     const mockFileHelper = {
