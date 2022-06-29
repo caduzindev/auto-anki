@@ -9,11 +9,15 @@ const Sut = ()=>{
     const mockAnkiRequest = {
         createNote: jest.fn()
     }
-    const sut = new AnkiManagerNote(mockAnkiRequest)
+    const mockTextToSpeech = {
+        textToAudio: jest.fn()
+    }
+    const sut = new AnkiManagerNote(mockAnkiRequest,mockTextToSpeech)
 
     return {
         sut,
-        mockAnkiRequest
+        mockAnkiRequest,
+        mockTextToSpeech
     }
 }
 
@@ -63,5 +67,25 @@ describe('AnkiManagerNote', () => {
        sut.addNote(data)
 
        expect(mockAnkiRequest.createNote).toHaveBeenCalledWith(data)
+    })
+    test('call success with audio',()=>{
+       const data = {
+        deckName: 'cobaia',
+        front: 'front',
+        back: 'back',
+        audio: true
+       }
+
+       const { sut, mockAnkiRequest, mockTextToSpeech } = Sut()
+
+       mockTextToSpeech
+            .textToAudio
+            .mockReturnValueOnce('http://fakerUrl')
+
+       sut.addNote(data)
+
+       expect(mockAnkiRequest.createNote).toHaveBeenCalledWith({...data,audioUrl:'http://fakerUrl'})
+       expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
+       expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
     })
 });
