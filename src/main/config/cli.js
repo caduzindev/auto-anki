@@ -12,8 +12,7 @@ export default ()=>{
     program.command('send-file')
         .description('send-file processa arquivos com frases para serem salvos no anki')
         .argument('<path>','arquivo a ser procesado')
-        // .action(path=>ProccessFileSaveAnkiFactory(path).execute())
-        .action(path=>console.log('ajsjhdasjdhjasdjjkhj'))
+        .action(path=>ProccessFileSaveAnkiFactory(path).execute())
 
     program.parse()
 }
