@@ -1,13 +1,8 @@
-import { jest } from '@jest/globals';
 import { Readable } from 'stream'
 import { ProccessFile } from "../../../../src/services/file/ProccessFile.js"
+import FileHelper from '../../../../src/helpers/File'
 
 const Sut = () => {
-    const mockFileHelper = {
-        fileExists: jest.fn(),
-        fileExtension: jest.fn(),
-        streamOfFile: jest.fn()
-    }
     const mockFileModel = {
         extractStructureFromLines: jest.fn(),
     }
@@ -15,18 +10,16 @@ const Sut = () => {
         addNote: jest.fn()
     }
 
-    const sut = new ProccessFile(mockFileHelper,mockFileModel,mockAnkiManagerNote)
+    const sut = new ProccessFile(mockFileModel,mockAnkiManagerNote)
 
     return {
         sut,
-        mockFileHelper,
         mockFileModel,
         mockAnkiManagerNote
     }
 }
 
 describe('Test ProcessFile service',()=>{
-
     test('Test ProcessFile calls success', async ()=>{
         const path = './faker.txt'
         const stream = new Readable({
@@ -43,19 +36,17 @@ describe('Test ProcessFile service',()=>{
             yield data
         }
 
-        const { sut, mockFileHelper, mockFileModel, mockAnkiManagerNote} = Sut()
+        const { sut, mockFileModel, mockAnkiManagerNote} = Sut()
 
-        mockFileHelper
-            .fileExists
-            .mockReturnValueOnce(true)
+        const fileExists = jest.spyOn(FileHelper,'fileExists')
+        const streamOfFile = jest.spyOn(FileHelper,'streamOfFile')
+        const fileExtension = jest.spyOn(FileHelper,'fileExtension')
 
-        mockFileHelper
-            .streamOfFile
-            .mockReturnValueOnce(stream)
+        fileExists.mockReturnValueOnce(true)
 
-        mockFileHelper
-            .fileExtension
-            .mockReturnValueOnce('.txt')
+        streamOfFile.mockReturnValueOnce(stream)
+
+        fileExtension.mockReturnValueOnce('.txt')
 
         mockFileModel
             .extractStructureFromLines
@@ -63,9 +54,9 @@ describe('Test ProcessFile service',()=>{
 
         await sut.sendAnki(path)
 
-        expect(mockFileHelper.fileExists).toHaveBeenCalledWith(path)
-        expect(mockFileHelper.fileExtension).toHaveBeenCalledWith(path)
-        expect(mockFileHelper.streamOfFile).toHaveBeenCalledWith(path)
+        expect(fileExists).toHaveBeenCalledWith(path)
+        expect(fileExtension).toHaveBeenCalledWith(path)
+        expect(streamOfFile).toHaveBeenCalledWith(path)
 
         expect(mockAnkiManagerNote.addNote).toHaveBeenCalledWith({
             deckName:'cobaia',
