@@ -1,20 +1,22 @@
 import { createReadStream, existsSync } from 'node:fs'
 import { extname } from 'node:path'
 
-export class File
+class File
 {
-    fileExists(path)
+    static fileExists(path)
     {
         return existsSync(path)
     }
 
-    fileExtension(path)
+    static fileExtension(path)
     {
         return extname(path)
     }
 
-    streamOfFile(path)
+    static streamOfFile(path)
     {
         return createReadStream(path)
     }
 }
+
+export default File

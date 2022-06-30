@@ -1,9 +1,9 @@
-import { ProccessFileSaveAnki } from '../../commands/ProccessFileSaveAnki.js'
-import { ProccessFile } from '../../services/file/ProccessFile.js'
-import { File as FileHelper } from '../../helpers/File.js'
-import { File as FileModel } from '../../models/file/File.js'
-import { TagPattern } from '../../models/file/TagPattern.js'
-import { AnkiManagerNote } from '../../services/anki/AnkiManagerNote.js'
+import { ProccessFileSaveAnki } from '../commands/ProccessFileSaveAnki'
+import { ProccessFile } from '../../services/file/ProccessFile'
+import { File as FileHelper } from '../../helpers/File'
+import { File as FileModel } from '../../models/file/File'
+import { TagPattern } from '../../models/file/TagPattern'
+import { AnkiManagerNote } from '../../services/anki/AnkiManagerNote'
 
 export default (path) =>
 {

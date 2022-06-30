@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { ProccessFile } from "../../../../src/services/file/ProccessFile.js"
+import { ProccessFile } from "../../../../src/services/file/ProccessFile"
 import FileHelper from '../../../../src/helpers/File'
 
 const Sut = () => {

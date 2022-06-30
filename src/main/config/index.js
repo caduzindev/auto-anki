@@ -1,5 +1,5 @@
-import { Aws } from '../../helpers/Aws.js'
-import Cli from './cli.js'
+import { Aws } from '../../helpers/Aws'
+import Cli from './cli'
 
 export function initApp()
 {

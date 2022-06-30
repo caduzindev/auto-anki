@@ -1,4 +1,4 @@
-import { initApp } from "./config/index.js"
+import { initApp } from "./config"
 
 function main()
 {

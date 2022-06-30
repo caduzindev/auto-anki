@@ -1,19 +1,18 @@
-import FileTxt from '../../collections/FileTxt.js'
-
+import FileTxt from '../../collections/FileTxt'
+import FileHelper from '../../helpers/File'
 export class ProccessFile
 {
-    constructor (fileHelper,fileModel,ankiManagerNote) {
-        this.fileHelper = fileHelper
+    constructor (fileModel,ankiManagerNote) {
         this.fileModel = fileModel
         this.ankiManagerNote = ankiManagerNote
     }
 
     async sendAnki(path)
     {
-        if (!this.fileHelper.fileExists(path)) throw new Error('O arquivo não existe')
-        if (this.fileHelper.fileExtension(path) !== '.txt') throw new Error('O arquivo deve ser .txt')
+        if (!FileHelper.fileExists(path)) throw new Error('O arquivo não existe')
+        if (FileHelper.fileExtension(path) !== '.txt') throw new Error('O arquivo deve ser .txt')
 
-        const stream = this.fileHelper.streamOfFile(path)
+        const stream = FileHelper.streamOfFile(path)
         const file = new FileTxt(stream)
 
         const result = this.fileModel.extractStructureFromLines(file)
