@@ -8,7 +8,7 @@ export class ProccessFile
         this.ankiManagerNote = ankiManagerNote
     }
 
-    async _invoke(path)
+    async sendAnki(path)
     {
         if (!this.fileHelper.fileExists(path)) throw new Error('O arquivo não existe')
         if (this.fileHelper.fileExtension(path) !== '.txt') throw new Error('O arquivo deve ser .txt')

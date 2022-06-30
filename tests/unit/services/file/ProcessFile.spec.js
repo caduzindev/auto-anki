@@ -61,7 +61,7 @@ describe('Test ProcessFile service',()=>{
             .extractStructureFromLines
             .mockReturnValueOnce(payload())
 
-        await sut._invoke(path)
+        await sut.sendAnki(path)
 
         expect(mockFileHelper.fileExists).toHaveBeenCalledWith(path)
         expect(mockFileHelper.fileExtension).toHaveBeenCalledWith(path)

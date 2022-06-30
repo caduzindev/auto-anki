@@ -1,9 +1,5 @@
 import { jest } from '@jest/globals';
 import { AnkiManagerNote } from "../../../../src/services/Anki/AnkiManagerNote";
-//deckName:'cobaia',
-//front: data.F,
-//back: `${data.M} ${data.T}`,
-//audio: true
 
 const Sut = ()=>{
     const mockAnkiRequest = {

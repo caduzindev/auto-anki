@@ -8,6 +8,6 @@ export class ProccessFileSaveAnki
 
     execute()
     {
-        this.service._invoke(this.path)
+        this.service.sendAnki(this.path)
     }
 }
