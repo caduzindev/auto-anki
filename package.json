@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node src/main/main.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "jest": "^28.1.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.1165.0",
     "commander": "^9.3.0"
   }
 }
