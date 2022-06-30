@@ -1,8 +1,6 @@
 export default {
   roots: ["<rootDir>/tests/"],
   coverageProvider: "v8",
-  transform: {},
-
   moduleFileExtensions: [
     "js",
     "mjs",
