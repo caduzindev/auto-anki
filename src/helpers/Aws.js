@@ -1,6 +1,6 @@
 import AwsLib from 'aws-sdk'
 
-export class Aws
+class Aws
 {
     _polly = null;
     static initialize()
@@ -24,3 +24,5 @@ export class Aws
         return this._polly;
     }
 }
+
+export default Aws
