@@ -71,16 +71,18 @@ describe('AnkiManagerNote', () => {
         back: 'back',
         audio: true
        }
-
+       const expectReturn = {
+            filename: 'faker.mp3',
+            url: 'http://localhost/faker.mp3'
+        }
        const { sut, mockAnkiRequest, mockTextToSpeech } = Sut()
-
        mockTextToSpeech
             .textToAudio
-            .mockReturnValueOnce('http://fakerUrl')
+            .mockReturnValueOnce(expectReturn)
 
        sut.addNote(data)
 
-       expect(mockAnkiRequest.createNote).toHaveBeenCalledWith({...data,audioUrl:'http://fakerUrl'})
+       expect(mockAnkiRequest.createNote).toHaveBeenCalledWith({...data,audioInfo: expectReturn})
        expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
        expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
     })
