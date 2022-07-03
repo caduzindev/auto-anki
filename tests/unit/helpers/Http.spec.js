@@ -1,5 +1,4 @@
 import Http from '../../../src/helpers/Http'
-import http from 'http'
 
 describe('Test Http', ()=>{
     test('should throw error if missing data (request post)',async ()=>{

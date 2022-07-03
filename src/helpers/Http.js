@@ -3,7 +3,7 @@ import { request } from 'http'
 class Http
 {
     static _config = {
-        hostname: 'http://localhost',
+        host: 'localhost',
         port: 80,
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,6 @@ class Http
 
     static async post(obj)
     {
-
         return new Promise((resolve,reject)=>{
             const requiredFields = ['data','path','method']
 

@@ -1,9 +1,9 @@
 export class AnkiManagerNote
 {
-    constructor(ankiRequest,textToSpeech)
+    constructor(ankiRequest,textToSpeechAws)
     {
         this.ankiRequest = ankiRequest
-        this.textToSpeech = textToSpeech
+        this.textToSpeechAws = textToSpeechAws
     }
 
     async addNote(obj)
@@ -16,7 +16,7 @@ export class AnkiManagerNote
         }
 
         if (!!obj.audio) {
-            const data = this.textToSpeech.textToAudio(obj.front)
+            const data = this.textToSpeechAws.textToAudio(obj.front)
             obj.audioInfo = data
         }
 
