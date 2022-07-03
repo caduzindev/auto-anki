@@ -17,9 +17,9 @@ export class TextToSpeechAws
                     Text: text,
                     TextType: 'text',
                     VoiceId: 'Nicole'
-                },function (err,data) {
-                    const url = FileHelper.saveFileStaticServer(data,'mp3')
-                    resolve(url)
+                },function (err,buffer) {
+                    const data = FileHelper.saveFileStaticServer(buffer,'mp3')
+                    resolve(data)
                 })
         })
     }

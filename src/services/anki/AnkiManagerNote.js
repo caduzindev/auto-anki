@@ -16,8 +16,8 @@ export class AnkiManagerNote
         }
 
         if (!!obj.audio) {
-            const url = this.textToSpeech.textToAudio(obj.front)
-            obj.audioUrl = url
+            const data = this.textToSpeech.textToAudio(obj.front)
+            obj.audioInfo = data
         }
 
         await this.ankiRequest.createNote(obj)
