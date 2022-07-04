@@ -2,7 +2,7 @@ import { request } from 'http'
 
 class Http
 {
-    static _config = {
+    static #config = {
         host: 'localhost',
         port: 80,
         headers: {
@@ -22,7 +22,7 @@ class Http
 
             const data = JSON.stringify(obj.data)
             const req = request({
-                ...this._config,
+                ...this.#config,
                 ...obj
             },res => {
                 let body = ''

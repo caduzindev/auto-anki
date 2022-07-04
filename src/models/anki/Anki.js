@@ -1,12 +1,12 @@
 export class Anki
 {
-    _templates = {
+    #templates = {
         'addNote': (obj)=> this.#addNoteTemplate(obj)
     }
 
     getTemplateAction(type,obj)
     {
-        if (this._templates[type]) return this._templates[type](obj)
+        if (this.#templates[type]) return this.#templates[type](obj)
 
         throw new Error(`action type ${type} não existe`)
     }

@@ -2,7 +2,7 @@ import AwsLib from 'aws-sdk'
 
 class Aws
 {
-    _polly = null;
+    static #polly = null;
     static initialize()
     {
         let credentials = new AwsLib.SharedIniFileCredentials()
@@ -15,13 +15,13 @@ class Aws
 
     static getPolly()
     {
-        if (!this._polly) {
-            this._polly = new AwsLib.Polly()
+        if (!this.#polly) {
+            this.#polly = new AwsLib.Polly()
 
-            return this._polly
+            return this.#polly
         }
 
-        return this._polly;
+        return this.#polly;
     }
 }
 
