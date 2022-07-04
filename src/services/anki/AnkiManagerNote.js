@@ -16,7 +16,7 @@ export class AnkiManagerNote
         }
 
         if (!!obj.audio) {
-            const data = this.textToSpeechAws.textToAudio(obj.front)
+            const data = await this.textToSpeechAws.textToAudio(obj.front)
             obj.audioInfo = data
         }
 

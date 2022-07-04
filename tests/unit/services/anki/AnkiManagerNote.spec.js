@@ -1,4 +1,3 @@
-import { jest } from '@jest/globals';
 import { AnkiManagerNote } from "../../../../src/services/Anki/AnkiManagerNote";
 
 const Sut = ()=>{
@@ -51,7 +50,7 @@ describe('AnkiManagerNote', () => {
 
        expect(()=>sut.addNote(data)).rejects.toThrowError(new Error('Campo back não informado'))
     })
-    test('call success without audio',()=>{
+    test('call success without audio',async ()=>{
        const data = {
         deckName: 'cobaia',
         front: 'front',
@@ -60,11 +59,11 @@ describe('AnkiManagerNote', () => {
 
        const { sut, mockAnkiRequest } = Sut()
 
-       sut.addNote(data)
+       await sut.addNote(data)
 
        expect(mockAnkiRequest.createNote).toHaveBeenCalledWith(data)
     })
-    test('call success with audio',()=>{
+    test('call success with audio',async ()=>{
        const data = {
         deckName: 'cobaia',
         front: 'front',
@@ -78,12 +77,13 @@ describe('AnkiManagerNote', () => {
        const { sut, mockAnkiRequest, mockTextToSpeech } = Sut()
        mockTextToSpeech
             .textToAudio
-            .mockReturnValueOnce(expectReturn)
+            .mockImplementation(()=>{
+                return new Promise((resolve) => resolve(expectReturn))
+            })
 
-       sut.addNote(data)
+       await sut.addNote(data)
 
        expect(mockAnkiRequest.createNote).toHaveBeenCalledWith({...data,audioInfo: expectReturn})
-       expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
        expect(mockTextToSpeech.textToAudio).toHaveBeenCalledWith(data.front)
     })
 });
