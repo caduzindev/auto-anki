@@ -6,8 +6,9 @@ export class ProccessFileSaveAnki
         this.path = path
     }
 
-    execute()
+    execute(_callback=()=>{})
     {
         this.service.sendAnki(this.path)
+            .then(()=>_callback())
     }
 }

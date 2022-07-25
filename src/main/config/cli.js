@@ -1,5 +1,6 @@
 import { Command } from 'commander'
 import ProccessFileSaveAnkiFactory from '../factories/ProccessFileSaveAnki'
+import FileServer from './fileserver'
 
 export default ()=>{
     const program = new Command()
@@ -12,7 +13,11 @@ export default ()=>{
     program.command('send-file')
         .description('send-file processa arquivos com frases para serem salvos no anki')
         .argument('<path>','arquivo a ser procesado')
-        .action(path=>ProccessFileSaveAnkiFactory(path).execute())
+        .action(path=>{
+            const server = FileServer()
+            ProccessFileSaveAnkiFactory(path).execute(()=>server.close())
+        })
+
 
     program.parse()
 }
