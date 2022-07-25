@@ -13,12 +13,12 @@ export class TextToSpeechAws
                 .synthesizeSpeech({
                     Engine: 'standard',
                     OutputFormat: 'mp3',
-                    SampleRate: '8000',
+                    SampleRate: '22050',
                     Text: text,
                     TextType: 'text',
-                    VoiceId: 'Nicole'
+                    VoiceId: 'Joanna'
                 },function (err,buffer) {
-                    const data = FileHelper.saveFileStaticServer(buffer,'mp3')
+                    const data = FileHelper.saveFileStaticServer(buffer.AudioStream,'mp3')
                     resolve(data)
                 })
         })

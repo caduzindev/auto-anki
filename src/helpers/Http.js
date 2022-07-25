@@ -1,39 +1,16 @@
-import { request } from 'http'
-
+import axios from 'axios'
 class Http
 {
-    static #config = {
-        host: 'localhost',
-        port: 80,
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }
-
     static async post(obj)
     {
         return new Promise((resolve,reject)=>{
-            const requiredFields = ['data','path','method']
-
-            for (const field of requiredFields)
-            {
-                if (!obj[field]) throw new Error(`Campo ${field} não informado`)
-            }
-
-            const data = JSON.stringify(obj.data)
-            const req = request({
-                ...this.#config,
-                ...obj
-            },res => {
-                let body = ''
-
-                res.on('data',data=> body += data)
-                res.on('end',() => resolve(body))
+            axios({
+                url: obj.url,
+                method: 'POST',
+                data: obj.data
             })
-            req.on('error',(e) => reject(e.message))
-
-            req.write(data)
-            req.end()
+            .then(response=>resolve(response.data))
+            .catch(error=>reject(error))
         })
     }
 }
