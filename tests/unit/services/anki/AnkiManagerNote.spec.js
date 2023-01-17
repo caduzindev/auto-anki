@@ -1,4 +1,4 @@
-import { AnkiManagerNote } from "../../../../src/services/Anki/AnkiManagerNote";
+import { AnkiManagerNote } from "../../../../src/services/anki/AnkiManagerNote";
 
 const Sut = ()=>{
     const mockAnkiRequest = {
