@@ -4,7 +4,8 @@ import { v4 } from 'uuid'
 class File
 {
     static #mimeTypes = ['mp3']
-
+    static fileServerPath = process.env.FILE_SERVER_PATH || ''
+    static fileServerHost = process.env.FILE_SERVER_HOST || ''
     static fileExists(path)
     {
         return existsSync(path)
@@ -26,11 +27,11 @@ class File
 
         const filename = `${v4()}.${mimeType}`
 
-        writeFileSync(join(process.env.FILE_SERVER_PATH,filename),data)
+        writeFileSync(join(this.fileServerPath,filename),data)
 
         return {
             filename,
-            url: process.env.FILE_SERVER_HOST+filename
+            url: this.fileServerHost+filename
         }
     }
     static deleteFileStaticServer()

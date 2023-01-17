@@ -19,7 +19,7 @@ export class ProccessFile
 
         for await (let data of result) {
             await this.ankiManagerNote.addNote({
-                deckName: 'cobaia',
+                deckName: 'mineração',
                 front: data.F,
                 back: `${data.M} ${data.T}`,
                 audio: true
