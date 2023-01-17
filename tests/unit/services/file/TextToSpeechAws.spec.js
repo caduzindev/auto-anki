@@ -11,9 +11,7 @@ const Sut = () => {
 describe('TextToSpeechAws', () => {
     test('should retun uri correct',async ()=>{
         const data = {
-            AudioStream: 'blabla',
-            ContentType: "audio/mp3",
-            RequestCharacters: 37
+            AudioStream: 'blabla'
         }
 
         AwsMock.mock('Polly','synthesizeSpeech',function (params,callback) {
@@ -31,6 +29,6 @@ describe('TextToSpeechAws', () => {
         AwsMock.restore()
 
         expect(result).toBe('http://fakerName.mp3')
-        expect(saveFileStaticServerSpy).toHaveBeenCalledWith(data,'mp3')
+        expect(saveFileStaticServerSpy).toHaveBeenCalledWith(data.AudioStream,'mp3')
     })
 });

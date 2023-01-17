@@ -1,12 +1,40 @@
-M fine
-F However room was clean and location was good.
-T (bem)
+M double-helical
+F Vibration analysis of a double helical highspeed running gearbox
+T (dipla helice)
 .
-M was
-F I was follishe
-T (fui,estava)
+M hundred
+F Estimate is a hundred to a hundred and fifty dollars.
+T (cem,centena,cento,mil)
 .
-M but
-F but you
-T (mas,porem,no entanto)
+M whole
+F The whole country will look like your first apartment.
+T (todo,inteiro,integral,total,geral,grande,conjunto,totalmente)
+.
+M depict
+F The drawings depict the history of Portugal.
+T (retratar,descrever,representar,mostrar,ilustrar,pintar)
+.
+M less
+F It will make us less effective, less visible, less democratic and less open.
+T (menos,menor,inferior,menores)
+.
+M mean
+F Depends what you mean by camping.
+T (significar,querer dizer,querer,ser,media,meio,meio-termo,mau)
+.
+M such
+F One with such delicate gestures... and such great dreams.
+T (tal,tão,tanto,assim,é,dessa)
+.
+M indistinguishable
+F Terrible because the artificial and the natural are indistinguishable.
+T (indistinguível,impercepitível)
+.
+M widely
+F This was widely interpreted as referring to a disc-shaped Earth.
+T (amplamente,muito,largamente,extensamente,bastante,vastamente)
+.
+M biggest
+F The biggest defense lawyer in town.
+T (o maior,maior,principal,grande)
 .

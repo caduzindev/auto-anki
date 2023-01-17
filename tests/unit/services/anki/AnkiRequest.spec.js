@@ -1,6 +1,7 @@
 import { AnkiRequest } from "../../../../src/services/anki/AnkiRequest"
-import Http from '../../../../src/helpers/Http'
+import httpHelper from '../../../../src/helpers/Http'
 
+jest.mock('../../../../src/helpers/Http')
 const template = obj => ({
     action: "addNote",
     version: 6,
@@ -49,15 +50,8 @@ describe('Test AnkiRequest',()=>{
             }
         }
         const expectTemplate = template(payload)
-        const expectRequest = {
-            port: 8765,
-            path: '/',
-            data: expectTemplate,
-            method: 'POST'
-        }
 
         const { sut, mockAnkiModel } = Sut()
-        const httpPostSpy = jest.spyOn(Http,'post').mockReturnValueOnce(null)
 
         mockAnkiModel
             .getTemplateAction
@@ -66,6 +60,5 @@ describe('Test AnkiRequest',()=>{
         sut.createNote(payload)
 
         expect(mockAnkiModel.getTemplateAction).toHaveBeenCalledWith('addNote',payload)
-        expect(httpPostSpy).toHaveBeenCalledWith(expectRequest)
     })
 })

@@ -59,7 +59,7 @@ describe('Test ProcessFile service',()=>{
         expect(streamOfFile).toHaveBeenCalledWith(path)
 
         expect(mockAnkiManagerNote.addNote).toHaveBeenCalledWith({
-            deckName:'cobaia',
+            deckName:'mineração',
             front: data.F,
             back: `${data.M} ${data.T}`,
             audio: true
